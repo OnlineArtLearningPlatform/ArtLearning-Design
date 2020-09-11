@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom';
 import Axios from 'axios';
-import { Card, CardBody, CardDeck, CardFooter, CardGroup, CardImg, CardImgOverlay, CardText, CardTitle, Button, Row, Container } from 'reactstrap'
+import { Row, Container } from 'reactstrap'
 
 import imageFile from '../assets/courseFile.jpg'
 
@@ -36,42 +36,22 @@ export default class TeacherDashboard extends Component {
         }
         return (
             <div >
+                <div className="dashboard_container">
 
-                <h6 className="text-center"> This is Teacher's Dashboard </h6>
+                    <h6 className="mb-3 mt-3 text-muted text-center"> Teacher's Dashboard </h6>
 
-                <CardDeck>
-                    <Card>
-                        <CardImg variant="top" style={{ width: '200px' }} src={imageFile} />
-                        <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardText>
-                                This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.
-                    </CardText>
-                        </CardBody>
-
-                    </Card>
-                    <Card>
-                        <CardImg variant="top" src="holder.js/100px160" />
-                        <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardText>
-                                This card has supporting text below as a natural lead-in to additional
-                            </CardText>
-                        </CardBody>
-
-                    </Card>
-                    <Card>
-                        <CardImg variant="top" src="holder.js/100px160" />
-                        <CardBody>
-                            <CardTitle>Card title</CardTitle>
-                            <CardText>
-                                This is a wider
-      </CardText>
-                        </CardBody>
-
-                    </Card>
-                </CardDeck>
+                    <Container className="dashboard_btn_container">
+                        <Row>
+                            <Link className="col-lg-3 col-md-4 shadow p-3 mb-5 rounded bg-success text-dark mt-3 mb-3 pt-3 pb-3 controls nounderline"
+                                to="/addCourse" style={{ width: '22rem' }}>
+                                <h4 className="text-center"><img style={{ width: "200px" }} src={require('../assets/courseFile.jpg')}
+                                    alt="sportlogo" /></h4>
+                                <h4 className="text-center">My Courses</h4>
+                                <p className="text-center"><small>View courses infos..</small></p>
+                            </Link>
+                        </Row>
+                    </Container>
+                </div>
             </div>
         )
     }

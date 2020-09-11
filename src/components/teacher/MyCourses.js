@@ -32,8 +32,7 @@ export default class MyCourses extends Component {
                 this.setState({
                     courses: response.data,
                 });
-            })
-            .catch((err) => console.log(err.response));
+            }).catch((err) => console.log(err.response));
 
 
         Axios.get("http://localhost:3001/users/myProfile", this.state.config)
@@ -42,11 +41,8 @@ export default class MyCourses extends Component {
                 this.setState({
                     user: response.data,
                     isLoggedIn: true,
-
                 });
-            })
-            .catch((err) => console.log(err.response));
-
+            }).catch((err) => console.log(err.response));
     }
 
     removeCourses = (courseId) => {
@@ -124,12 +120,12 @@ export default class MyCourses extends Component {
                                                 </Link>
                                             </td>
                                             <td>
-                                                <Link to={`/addResources/${courses._id}`}>
+                                                <Link to={`/addResource/${courses._id}`}>
                                                     <Button color='success' block >Add</Button>
                                                 </Link>
                                             </td>
                                             <td>
-                                                <Link to={`/enrollments/${courses._id}`}>
+                                                <Link to={`/viewEnrollments/${courses._id}`}>
                                                     <Button color='warning' block >Enrollment</Button>
                                                 </Link>
                                             </td>

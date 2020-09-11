@@ -17,7 +17,9 @@ import TeacherDashboard from './components/teacher/TeacherDashboard'
 import AddCourse from './components/teacher/AddCourse';
 import ViewMyCourses from './components/teacher/MyCourses';
 import EditCourse from './components/teacher/EditCourse';
-
+import Resources from './components/teacher/Resource';
+import ViewEnrollment from './components/teacher/ViewEnrollment';
+import PlayResource from './components/teacher/PlayResource';
 
 
 function App() {
@@ -30,8 +32,11 @@ function App() {
         <Route exact path='/file' component={file} />
         <PrivateRoute exact path='/teacher-dashboard' component={TeacherDashboard}></PrivateRoute>
         <PrivateRoute path='/addCourse' component={AddCourse}></PrivateRoute>
-        <PrivateRoute path='/viewMyCources' component={ViewMyCourses}></PrivateRoute>
+        <PrivateRoute path='/viewMyCourses' component={ViewMyCourses}></PrivateRoute>
         <PrivateRoute path='/editCourse/:id' component={EditCourse}></PrivateRoute>
+        <PrivateRoute path='/addResource/:id' component={Resources}></PrivateRoute>
+        <PrivateRoute path='/viewEnrollments/:id' component={ViewEnrollment}></PrivateRoute>
+        <Route path='/playResource/:id' component={PlayResource}></Route>
         <Route>
           <NoMatch />
         </Route>

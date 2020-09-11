@@ -43,11 +43,11 @@ export default class TeacherDashboard extends Component {
                     <Container className="dashboard_btn_container">
                         <Row>
                             <Link className="col-lg-3 col-md-4 shadow p-3 mb-5 rounded bg-success text-dark mt-3 mb-3 pt-3 pb-3 controls nounderline"
-                                to="/addCourse" style={{ width: '22rem' }}>
+                                to="/viewMyCourses" style={{ width: '22rem' }}>
                                 <h4 className="text-center"><img style={{ width: "200px" }} src={require('../assets/courseFile.jpg')}
                                     alt="sportlogo" /></h4>
                                 <h4 className="text-center">My Courses</h4>
-                                <p className="text-center"><small>View courses infos..</small></p>
+                                <p className="text-center"><small>View courses infos...</small></p>
                             </Link>
                         </Row>
                     </Container>

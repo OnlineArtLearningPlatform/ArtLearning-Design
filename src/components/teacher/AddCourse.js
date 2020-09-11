@@ -100,7 +100,7 @@ export default class AddCourse extends Component {
                 <Container>
                     <h2 style={{ margin: '20px 0px 0px 0px' }}>Add Courses </h2>
 
-                    <Link to={`/viewMyCources`}>
+                    <Link to={`/viewMyCourses`}>
                         <Button color="primary" style={{ margin: '-40px 60px 0px 60px', float: 'right' }}> View my cources</Button>
                     </Link>
                     <hr></hr>
@@ -144,7 +144,7 @@ export default class AddCourse extends Component {
 
                                 <FormGroup>
 
-                                    <Label for="image">Product image</Label>
+                                    <Label for="image">Course Cover</Label>
                                     <FormGroup>
                                         <img className='img-thumbnail image'
                                             width='400' src={`http://localhost:3001/uploads/${this.state.image}`}

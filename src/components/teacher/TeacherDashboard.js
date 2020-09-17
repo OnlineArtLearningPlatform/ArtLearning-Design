@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect, Link } from 'react-router-dom';
 import Axios from 'axios';
-import { Row, Container } from 'reactstrap'
+import { Row, Container, Button } from 'reactstrap'
 
 import imageFile from '../assets/courseFile.jpg'
 
@@ -30,6 +30,12 @@ export default class TeacherDashboard extends Component {
             .catch((err) => console.log(err.response));
 
     }
+    handleLogout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('token');
+        // alert("Logout Successfull");
+        this.props.history.push('/login')
+    }
     render() {
         if (this.state.user.role === 'student') {
             return <Redirect to='/' />
@@ -49,6 +55,8 @@ export default class TeacherDashboard extends Component {
                                 <h4 className="text-center">My Courses</h4>
                                 <p className="text-center"><small>View courses infos...</small></p>
                             </Link>
+                            <span className="col-lg-1 col-md-4"></span>
+                            <Link to='/login'><Button color="dark" style={{ margin: '10px' }} onClick={this.handleLogout}>Logout</Button></Link>
                         </Row>
                     </Container>
                 </div>

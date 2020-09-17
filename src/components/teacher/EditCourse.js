@@ -99,7 +99,7 @@ export default class EditCourse extends Component {
                 <Container>
                     <h2 style={{ margin: '20px 0px 0px 0px' }}>Update Course</h2>
 
-                    <Link to={`/viewMyCources`}>
+                    <Link to={`/viewMyCourses`}>
                         <Button color="primary" style={{ margin: '-40px 60px 0px 60px', float: 'right' }}> View my cources</Button>
                     </Link>
                     <hr></hr>

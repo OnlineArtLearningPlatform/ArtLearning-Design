@@ -120,6 +120,7 @@ export default class AddCourse extends Component {
                                         <option>Graphite Drawing</option>
                                         <option>Water Color</option>
                                         <option>Oil Painting</option>
+                                        <option>Digital Painting</option>
                                     </Input>
                                 </FormGroup>
 

@@ -65,6 +65,7 @@ export default class Home extends Component {
                 </h1>
                 <Link to='/login'><Button color="dark" style={{ margin: '10px' }} onClick={this.handleLogout}>Logout</Button></Link>
                 <Link to='/myEnrollments'><Button color="dark" style={{ margin: '10px' }}>My Enrollments</Button></Link>
+                <Link to='/communityForum'><Button color="dark" style={{ margin: '10px' }}>Community Forum</Button></Link>
                 <CardColumns>
                     {this.state.courses.map((courses =>
                         <Card key={courses._id}>

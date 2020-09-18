@@ -24,6 +24,7 @@ import PlayResource from './components/teacher/PlayResource';
 import MyEnrollments from './components/student/MyEnrollment';
 import ViewCourseResource from './components/student/ViewCourse';
 
+import communityForum from './components/CommunityForum'
 
 function App() {
   return (
@@ -43,6 +44,8 @@ function App() {
 
         <PrivateRoute path='/myEnrollments' component={MyEnrollments}></PrivateRoute>
         <PrivateRoute path='/viewResources/:id' component={ViewCourseResource}></PrivateRoute>
+
+        <PrivateRoute path='/communityForum' component={communityForum}></PrivateRoute>
         <Route>
           <NoMatch />
         </Route>

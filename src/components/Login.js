@@ -50,7 +50,7 @@ export default class Login extends Component {
         return (
             <div>
 
-                <Container className="signinform">
+                <Container className="signinform" style={{ width: '500px' }}>
                     <h2 style={{ textAlign: 'center' }}>LOGIN</h2>
                     <hr></hr>
 

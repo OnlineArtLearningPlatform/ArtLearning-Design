@@ -21,10 +21,13 @@ import Resources from './components/teacher/Resource';
 import ViewEnrollment from './components/teacher/ViewEnrollment';
 import PlayResource from './components/teacher/PlayResource';
 
+import CourseDetail from './components/CourseInfo';
+
 import MyEnrollments from './components/student/MyEnrollment';
 import ViewCourseResource from './components/student/ViewCourse';
 
 import communityForum from './components/CommunityForum'
+import ViewReplies from './components/CommunityReplies';
 
 function App() {
   return (
@@ -40,12 +43,16 @@ function App() {
         <PrivateRoute path='/editCourse/:id' component={EditCourse}></PrivateRoute>
         <PrivateRoute path='/addResource/:id' component={Resources}></PrivateRoute>
         <PrivateRoute path='/viewEnrollments/:id' component={ViewEnrollment}></PrivateRoute>
+
         <Route path='/playResource/:id' component={PlayResource}></Route>
+
+        <Route path='/courseDetails/:id' component={CourseDetail} />
 
         <PrivateRoute path='/myEnrollments' component={MyEnrollments}></PrivateRoute>
         <PrivateRoute path='/viewResources/:id' component={ViewCourseResource}></PrivateRoute>
 
         <PrivateRoute path='/communityForum' component={communityForum}></PrivateRoute>
+        <PrivateRoute path='/viewReplies/:id' component={ViewReplies}></PrivateRoute>
         <Route>
           <NoMatch />
         </Route>

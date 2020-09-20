@@ -58,35 +58,72 @@ export default class Home extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <h1>
-                    Welcome "{this.state.user.fullName}"
-                </h1>
-                <Link to='/login'><Button color="dark" style={{ margin: '10px' }} onClick={this.handleLogout}>Logout</Button></Link>
-                <Link to='/myEnrollments'><Button color="dark" style={{ margin: '10px' }}>My Enrollments</Button></Link>
-                <Link to='/communityForum'><Button color="dark" style={{ margin: '10px' }}>Community Forum</Button></Link>
-                <CardColumns>
-                    {this.state.courses.map((courses =>
-                        <Card key={courses._id}>
-                            <CardImg className="cardimg" top width="70%" height="280px" src={`http://localhost:3001/uploads/${courses.image}`} alt="Card_image" />
-                            <CardBody>
-                                <CardTitle className="cardtitle">{courses.title}</CardTitle>
-                                <CardTitle className="cardtitle">Rs: {courses.price}</CardTitle>
-                                <CardTitle className="cardtitle">MEDIUM: {courses.medium}</CardTitle>
-                                <CardTitle className="cardtitle">TYPE: {courses.courseType}</CardTitle>
-                                <CardTitle className="cardtitle">TUTOR: {courses.owner.fullName}</CardTitle>
-                                <hr></hr>
+        if (localStorage.getItem('token')) {
+            return (
+                <div>
+                    <h1>
+                        Welcome "{this.state.user.fullName}"
+                    </h1>
+                    <Link to='/login'><Button color="dark" style={{ margin: '10px' }} onClick={this.handleLogout}>Logout</Button></Link>
+                    <Link to='/myEnrollments'><Button color="dark" style={{ margin: '10px' }}>My Enrollments</Button></Link>
+                    <Link to='/communityForum'><Button color="dark" style={{ margin: '10px' }}>Community Forum</Button></Link>
+                    <CardColumns>
+                        {this.state.courses.map((courses =>
+                            <Card key={courses._id}>
+                                <CardImg className="cardimg" top width="70%" height="280px" src={`http://localhost:3001/uploads/${courses.image}`} alt="Card_image" />
+                                <CardBody>
+                                    <CardTitle className="cardtitle">{courses.title}</CardTitle>
+                                    <CardTitle className="cardtitle">Rs: {courses.price}</CardTitle>
+                                    <CardTitle className="cardtitle">MEDIUM: {courses.medium}</CardTitle>
+                                    <CardTitle className="cardtitle">TYPE: {courses.courseType}</CardTitle>
+                                    <CardTitle className="cardtitle">TUTOR: {courses.owner.fullName}</CardTitle>
+                                    <hr></hr>
 
-                                <Link to='/courseDetails'>
-                                    <Button color="primary" > More Details</Button>
-                                </Link>
-                                <Button color="danger" style={{ margin: '5px' }} onClick={() => this.postEnrollment(courses._id, courses.owner.fullName)}>Enroll Now</Button>
-                            </CardBody>
-                        </Card>
-                    ))}
-                </CardColumns>
-            </div>
-        )
+                                    <Link to={`/courseDetails/${courses._id}`}>
+                                        <Button color="primary" > More Details</Button>
+                                    </Link>
+                                    <Button color="danger" style={{ margin: '5px' }} onClick={() => this.postEnrollment(courses._id, courses.owner.fullName)}>Enroll Now</Button>
+                                </CardBody>
+                            </Card>
+                        ))}
+                    </CardColumns>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    <h1>
+                        Welcome "{this.state.user.fullName}"
+                        </h1>
+                    <Link to='/login'><Button color="dark" style={{ margin: '10px' }} onClick={this.handleLogout}>Logout</Button></Link>
+                    <Link to='/myEnrollments'><Button color="dark" style={{ margin: '10px' }}>My Enrollments</Button></Link>
+                    <Link to='/communityForum'><Button color="dark" style={{ margin: '10px' }}>Community Forum</Button></Link>
+                    <CardColumns>
+                        {this.state.courses.map((courses =>
+                            <Card key={courses._id}>
+                                <CardImg className="cardimg" top width="70%" height="280px" src={`http://localhost:3001/uploads/${courses.image}`} alt="Card_image" />
+                                <CardBody>
+                                    <CardTitle className="cardtitle">{courses.title}</CardTitle>
+                                    <CardTitle className="cardtitle">Rs: {courses.price}</CardTitle>
+                                    <CardTitle className="cardtitle">MEDIUM: {courses.medium}</CardTitle>
+                                    <CardTitle className="cardtitle">TYPE: {courses.courseType}</CardTitle>
+                                    <CardTitle className="cardtitle">TUTOR: {courses.owner.fullName}</CardTitle>
+                                    <hr></hr>
+
+                                    <Link to={`/courseDetails/${courses._id}`}>
+                                        <Button color="primary" > More Details</Button>
+                                    </Link>
+                                    <Link to='/login'>
+                                        <Button color="danger" style={{ margin: '5px' }} > Enroll Now</Button>
+                                    </Link>
+                                </CardBody>
+                            </Card>
+                        ))}
+                    </CardColumns>
+                </div>
+            )
+        }
+
     }
 }

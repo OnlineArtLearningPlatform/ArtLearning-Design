@@ -51,3 +51,34 @@
   box-shadow: 2px 0px 31px #efefef;
 }
 
+#queries{
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 2px 0px 31px #efefef;
+}
+
+#AnswerDiv{
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 2px 0px 31px #efefef;
+}
+
+#question{
+  padding: 20px;
+  background-color: #76D7C4 ;
+}
+
+#answers{
+  padding: 20px;
+  margin-top: 10px;
+  background-color:#D5D8DC;
+}
+
+#courseInfo{
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 2px 0px 31px #efefef;
+}

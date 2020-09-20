@@ -58,6 +58,7 @@ export default class CommunityForum extends Component {
             .then((response) => {
                 console.log(response.data);
                 alert("You have posted your query successfully!")
+                window.location.reload(false);
                 this.setState({
                     category: '',
                     query: ''
@@ -70,7 +71,7 @@ export default class CommunityForum extends Component {
     render() {
         return (
             <div>
-                <h2 style={{ textAlign: "center", color: 'blue' }}>
+                <h2 style={{ textAlign: "center", color: '#566573 ' }}>
                     Welcome "{this.state.user.fullName}", Do you have any Queries?
                 </h2>
                 <hr></hr>
@@ -88,31 +89,32 @@ export default class CommunityForum extends Component {
                             </FormGroup>
                             <FormGroup>
                                 <Label for="query">Your Query</Label>
-                                <Input type="text" name="query" id="query" value={this.state.query} onChange={this.handleChange} />
+                                <Input type="textarea" name="query" id="query" value={this.state.query} onChange={this.handleChange}
+                                    placeholder="Write your query..." />
                             </FormGroup>
-                            <Button color='primary' onClick={this.addQuery}>
+                            <Button color='success' onClick={this.addQuery}>
                                 Ask Now
                             </Button>
                         </Form>
                         <hr></hr>
                     </Container>
                 </div>
-                <Container>
+                <Container >
                     {this.state.queries.map((queries) => {
                         return (
-                            <div key={queries._id} style={{ margin: '25px auto', padding: '25px', background: '#C0C0C0' }}>
+                            <div key={queries._id} id='queries' >
                                 <h3>{queries.query}</h3>
-                                <h5>Categoty: {queries.category}</h5>
-                                <h5>Asked By: {queries.askedBy.fullName}</h5>
-                                <Button color='success' onClick={this.postReply}>Reply Now</Button>
+                                <Label style={{ marginRight: '2%' }}>Category: {queries.category}</Label>
+                                <Label>Asked By: {queries.askedBy.fullName}</Label>
+                                <br></br>
+
+                                <Link to={`/viewReplies/${queries._id}`}>
+                                    <Button color='primary' >View Replies</Button>
+                                </Link>
                             </div>
                         )
-
                     })}
                 </Container>
-
-
-
             </div>
         )
     }

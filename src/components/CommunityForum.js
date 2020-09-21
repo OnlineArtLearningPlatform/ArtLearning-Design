@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Form, Input, FormGroup, Label, Button } from 'reactstrap'
+import { Container, Row, Form, Input, FormGroup, Label, Button } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import Axios from 'axios'
 
@@ -67,6 +67,18 @@ export default class CommunityForum extends Component {
             }).catch((err) => console.log(err))
     }
 
+    removeQuery = (queryId) => {
+        Axios.delete(`http://localhost:3001/query/${queryId}`, this.state.config)
+            .then((response) => {
+                const filteredItemslist = this.state.queries.filter((queries) => {
+                    return queries._id !== queryId
+                })
+                this.setState({
+                    queries: filteredItemslist
+                })
+            }).catch((err) => console.log(err.response));
+    }
+
 
     render() {
         return (
@@ -95,6 +107,7 @@ export default class CommunityForum extends Component {
                             <Button color='success' onClick={this.addQuery}>
                                 Ask Now
                             </Button>
+
                         </Form>
                         <hr></hr>
                     </Container>
@@ -105,12 +118,13 @@ export default class CommunityForum extends Component {
                             <div key={queries._id} id='queries' >
                                 <h3>{queries.query}</h3>
                                 <Label style={{ marginRight: '2%' }}>Category: {queries.category}</Label>
-                                <Label>Asked By: {queries.askedBy.fullName}</Label>
+                                <Label>Asked By: {queries.askedBy.fullName} ({queries.askedBy.role})</Label>
                                 <br></br>
-
                                 <Link to={`/viewReplies/${queries._id}`}>
-                                    <Button color='primary' >View Replies</Button>
+                                    <Button color='primary' style={{ marginRight: '10px' }}>View Replies</Button>
                                 </Link>
+                                {this.state.user._id === queries.askedBy._id ? (<Button color='danger' onClick={() => this.removeQuery(queries._id)} >Remove</Button>) :
+                                    <Button color='danger' hidden>Remove</Button>}
                             </div>
                         )
                     })}

@@ -66,8 +66,20 @@ export default class CommunityReplies extends Component {
         }, this.state.config)
             .then((response) => {
                 console.log(response)
-                alert("Your reply posted successfully!")
+                // alert("Your reply posted successfully!")
                 window.location.reload(false);
+            }).catch((err) => console.log(err.response));
+    }
+
+    removeAnswer = (answerId) => {
+        Axios.delete(`http://localhost:3001/answer/${answerId}`, this.state.config)
+            .then((response) => {
+                const filteredItemslist = this.state.answers.filter((answers) => {
+                    return answers._id !== answerId
+                })
+                this.setState({
+                    answers: filteredItemslist
+                })
             }).catch((err) => console.log(err.response));
     }
 
@@ -85,7 +97,9 @@ export default class CommunityReplies extends Component {
                         return (
                             <div key={answers._id} id='answers' >
                                 <h5>{answers.answer}</h5>
-                                <Label>Answered By: {answers.answeredBy.fullName}</Label>
+                                <Label style={{ marginRight: '10px' }}>Answered By: {answers.answeredBy.fullName}</Label>
+                                {this.state.user._id === answers.answeredBy._id ? (<Button color='danger' onClick={() => this.removeAnswer(answers._id)} >Remove</Button>) :
+                                    <Button color='danger' hidden>Remove</Button>}
                             </div>
                         )
                     })}

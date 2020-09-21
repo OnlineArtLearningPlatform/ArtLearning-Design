@@ -82,7 +82,8 @@ export default class Home extends Component {
                                     <Link to={`/courseDetails/${courses._id}`}>
                                         <Button color="primary" > More Details</Button>
                                     </Link>
-                                    <Button color="danger" style={{ margin: '5px' }} onClick={() => this.postEnrollment(courses._id, courses.owner.fullName)}>Enroll Now</Button>
+                                    {courses.courseType === 'Free' ? (<Button color="danger" style={{ margin: '5px' }} disabled>Enroll Now</Button>) :
+                                        <Button color="danger" style={{ margin: '5px' }} onClick={() => this.postEnrollment(courses._id, courses.owner.fullName)}>Enroll Now</Button>}
                                 </CardBody>
                             </Card>
                         ))}
@@ -114,9 +115,10 @@ export default class Home extends Component {
                                     <Link to={`/courseDetails/${courses._id}`}>
                                         <Button color="primary" > More Details</Button>
                                     </Link>
-                                    <Link to='/login'>
-                                        <Button color="danger" style={{ margin: '5px' }} > Enroll Now</Button>
-                                    </Link>
+                                    {courses.courseType === 'Free' ? (<Button color="danger" style={{ margin: '5px' }} disabled>Enroll Now</Button>) :
+                                        <Link to='/login'>
+                                            <Button color="danger" style={{ margin: '5px' }} onClick={() => this.postEnrollment(courses._id, courses.owner.fullName)}>Enroll Now</Button></Link>}
+
                                 </CardBody>
                             </Card>
                         ))}
